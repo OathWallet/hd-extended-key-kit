@@ -1,0 +1,63 @@
+{
+  "name": "hd-extended-key-kit",
+  "version": "0.1.0",
+  "description": "HD wallet extended key derivation for xpub/ypub/zpub/xprv/yprv/zprv plus multi-chain BIP32 and SLIP10 paths.",
+  "type": "module",
+  "main": "./src/index.js",
+  "bin": {
+    "hdkeykit": "./bin/hdkeykit.js"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./bip32": "./src/bip32.js",
+    "./slip10": "./src/slip10.js",
+    "./chains": "./src/chains.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "README.md",
+    "LICENSE",
+    "llms.txt"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "examples": "examples/run-examples.sh",
+    "start": "node bin/hdkeykit.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devdasx/hd-extended-key-kit.git"
+  },
+  "keywords": [
+    "xpub",
+    "ypub",
+    "zpub",
+    "xprv",
+    "yprv",
+    "zprv",
+    "bip32",
+    "bip39",
+    "bip44",
+    "slip10",
+    "slip44",
+    "slip132",
+    "hd wallet",
+    "bitcoin",
+    "ethereum",
+    "solana",
+    "dogecoin",
+    "litecoin",
+    "ai-agent-friendly"
+  ],
+  "author": "ROYO STUDIOS <royostudios13@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@noble/curves": "^2.0.1",
+    "@noble/hashes": "^2.0.1",
+    "@scure/bip39": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

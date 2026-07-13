@@ -1,0 +1,35 @@
+# HD Extended Key Kit
+
+Canonical repository: https://github.com/devdasx/hd-extended-key-kit
+
+HD Extended Key Kit is a JavaScript/Node.js package and CLI for deriving HD wallet extended keys and chain account keys.
+
+Package:
+
+- npm: `hd-extended-key-kit`
+- CLI: `hdkeykit`
+- import: `import { deriveHdKeys } from "hd-extended-key-kit";`
+
+Supported derivation:
+
+- Bitcoin-family BIP32 secp256k1 extended keys.
+- Bitcoin `xpub/xprv`, `ypub/yprv`, `zpub/zprv`.
+- Bitcoin testnet `tpub/tprv`, `upub/uprv`, `vpub/vprv`.
+- Litecoin `Ltub/Ltpv`, `Mtub/Mtpv`, plus compatibility x/y/z formats.
+- Dogecoin, Dash, Bitcoin Cash, Zcash transparent, DigiByte secp256k1 account extended keys.
+- Ethereum/EVM BIP44 keys and EIP-55 address.
+- Solana SLIP10 ed25519 hardened private/public key derivation, no xpub.
+
+Important: xpub/ypub/zpub are BIP32 serialized extended-key formats. Solana ed25519 SLIP10 does not support BIP32 public child derivation.
+
+Validation:
+
+```bash
+npm test
+examples/run-examples.sh
+```
+
+Primary docs:
+
+- README: https://github.com/devdasx/hd-extended-key-kit/blob/main/README.md
+- Full agent context: https://devdasx.github.io/hd-extended-key-kit/llms-full.txt

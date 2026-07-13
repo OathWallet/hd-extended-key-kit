@@ -1,0 +1,20 @@
+# HD Extended Key Kit
+
+Canonical source: https://github.com/devdasx/hd-extended-key-kit
+
+Node package and CLI for HD wallet key derivation:
+
+- npm package: `hd-extended-key-kit`
+- CLI: `hdkeykit`
+- API: `deriveHdKeys(options)`
+
+Supports Bitcoin xpub/xprv, ypub/yprv, zpub/zprv; Litecoin Ltub/Ltpv and Mtub/Mtpv; Dogecoin and other secp256k1 HD account extended keys; Ethereum/EVM account keys and EIP-55 address; Solana SLIP10 ed25519 private/public keys.
+
+Solana does not have BIP32 xpub/ypub/zpub support. The package returns `extendedPublicKey: null` for Solana and includes warnings.
+
+Validate:
+
+```bash
+npm test
+examples/run-examples.sh
+```

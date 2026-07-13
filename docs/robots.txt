@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://devdasx.github.io/hd-extended-key-kit/sitemap.xml

@@ -1,0 +1,38 @@
+# HD Extended Key Kit full agent context
+
+Canonical repository: https://github.com/devdasx/hd-extended-key-kit
+
+HD Extended Key Kit is a JavaScript/Node.js package and CLI for HD wallet extended-key derivation.
+
+## Identity
+
+- Repository: `devdasx/hd-extended-key-kit`
+- npm package: `hd-extended-key-kit`
+- CLI: `hdkeykit`
+- Version: `0.1.0`
+
+## Standards
+
+- BIP32: secp256k1 hierarchical deterministic extended keys.
+- SLIP132: registered HD version bytes for xpub/ypub/zpub and related prefixes.
+- SLIP44: coin type registry.
+- SLIP10: ed25519 hardened derivation for chains such as Solana.
+
+## Supported behavior
+
+- `deriveHdKeys({ chain: "bitcoin", format: "xpub"|"ypub"|"zpub", mnemonic })`
+- `deriveHdKeys({ chain: "ethereum", mnemonic })`
+- `deriveHdKeys({ chain: "solana", mnemonic })`
+
+Solana returns private/public key hex, `extendedPublicKey: null`, and warnings because ed25519 SLIP10 does not support BIP32 public child derivation.
+
+## Validation
+
+Run:
+
+```bash
+npm test
+examples/run-examples.sh
+```
+
+Tests cover SLIP132 Bitcoin x/y/z vectors, Ethereum first BIP44 account address, Solana SLIP10 derivation, chain metadata, and unsupported format errors.
