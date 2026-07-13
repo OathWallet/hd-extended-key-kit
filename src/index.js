@@ -6,14 +6,26 @@ import { deriveBip32PrivateKey, masterFromSeed } from "./bip32.js";
 import { CHAINS, accountPathFor, listChains } from "./chains.js";
 import { deriveSlip10Ed25519 } from "./slip10.js";
 import { bytesToHex, hexToBytes, normalizeSeed, toChecksumAddress } from "./utils.js";
+export {
+  ADDRESS_NETWORKS,
+  bech32Encode,
+  convertBits,
+  deriveAddress,
+  deriveAddresses,
+  deriveAddressFromExtendedKey,
+  publicKeyToAddress,
+  scriptTypeFromFormat
+} from "./address.js";
 
 export { CHAINS, EXTENDED_KEY_FORMATS, listChains } from "./chains.js";
 export {
   ExtendedPrivateKey,
+  ExtendedPublicKey,
   HARDENED_OFFSET,
   compressedPublicKeyFromPrivate,
   deriveBip32PrivateKey,
   masterFromSeed,
+  parseExtendedKey,
   parseDerivationPath,
   serializeExtendedKey
 } from "./bip32.js";

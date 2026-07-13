@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import { deriveHdKeys, listChains } from "../src/index.js";
+import { deriveAddress, deriveAddresses, deriveAddressFromExtendedKey, deriveHdKeys, listChains } from "../src/index.js";
 
-const version = "0.1.0";
+const version = "0.2.0";
 
 function usage() {
   console.log(`hdkeykit ${version}
@@ -11,12 +11,21 @@ Usage:
   hdkeykit derive --chain ethereum --mnemonic "..."
   hdkeykit derive --chain solana --mnemonic "..."
   hdkeykit derive --chain bitcoin --format xpub --seed-hex <hex> --path "m/44'/0'/0'"
+  hdkeykit address --chain bitcoin --format zpub --mnemonic "..." --index 0
+  hdkeykit addresses --chain bitcoin --format zpub --mnemonic "..." --count 20
+  hdkeykit address-from-xpub --chain bitcoin --xpub <xpub-or-ypub-or-zpub> --index 0
   hdkeykit list-chains
 
 Options:
   --chain NAME        Chain id. Default: bitcoin
   --format FORMAT     xpub, ypub, zpub, Ltub, Mtub, etc. Chain dependent.
   --path PATH         Explicit derivation path.
+  --change NUMBER     Address branch. Default: 0
+  --index NUMBER      Address index. Default: 0
+  --start NUMBER      First address index for address batches. Default: 0
+  --count NUMBER      Address count for address batches. Default: 20
+  --xpub KEY          Extended public key for address-from-xpub.
+  --extended-key KEY  Extended public/private key for address-from-xpub.
   --mnemonic WORDS    BIP-39 mnemonic. Quote it.
   --passphrase TEXT   Optional BIP-39 passphrase.
   --seed-hex HEX      Raw BIP-32 seed as hex.
@@ -69,6 +78,46 @@ try {
       mnemonic: args.mnemonic,
       passphrase: args.passphrase,
       seedHex: args.seedHex
+    });
+    console.log(JSON.stringify(result, null, args.pretty ? 2 : 0));
+    process.exit(0);
+  }
+  if (command === "address") {
+    const result = deriveAddress({
+      chain: args.chain,
+      format: args.format,
+      path: args.path,
+      mnemonic: args.mnemonic,
+      passphrase: args.passphrase,
+      seedHex: args.seedHex,
+      change: args.change,
+      index: args.index
+    });
+    console.log(JSON.stringify(result, null, args.pretty ? 2 : 0));
+    process.exit(0);
+  }
+  if (command === "addresses") {
+    const result = deriveAddresses({
+      chain: args.chain,
+      format: args.format,
+      path: args.path,
+      mnemonic: args.mnemonic,
+      passphrase: args.passphrase,
+      seedHex: args.seedHex,
+      change: args.change,
+      start: args.start,
+      count: args.count
+    });
+    console.log(JSON.stringify(result, null, args.pretty ? 2 : 0));
+    process.exit(0);
+  }
+  if (command === "address-from-xpub") {
+    const result = deriveAddressFromExtendedKey({
+      chain: args.chain,
+      format: args.format,
+      extendedKey: args.extendedKey || args.xpub || args.ypub || args.zpub || args.xprv || args.yprv || args.zprv,
+      change: args.change,
+      index: args.index
     });
     console.log(JSON.stringify(result, null, args.pretty ? 2 : 0));
     process.exit(0);

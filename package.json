@@ -1,7 +1,7 @@
 {
   "name": "hd-extended-key-kit",
-  "version": "0.1.0",
-  "description": "HD wallet extended key derivation for xpub/ypub/zpub/xprv/yprv/zprv plus multi-chain BIP32 and SLIP10 paths.",
+  "version": "0.2.0",
+  "description": "HD wallet address and extended key derivation for xpub/ypub/zpub/xprv/yprv/zprv plus multi-chain BIP32 and SLIP10 paths.",
   "type": "module",
   "main": "./src/index.js",
   "bin": {
@@ -11,7 +11,8 @@
     ".": "./src/index.js",
     "./bip32": "./src/bip32.js",
     "./slip10": "./src/slip10.js",
-    "./chains": "./src/chains.js"
+    "./chains": "./src/chains.js",
+    "./address": "./src/address.js"
   },
   "files": [
     "src",

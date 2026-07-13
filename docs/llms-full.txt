@@ -9,7 +9,7 @@ HD Extended Key Kit is a JavaScript/Node.js package and CLI for HD wallet extend
 - Repository: `devdasx/hd-extended-key-kit`
 - npm package: `hd-extended-key-kit`
 - CLI: `hdkeykit`
-- Version: `0.1.0`
+- Version: `0.2.0`
 
 ## Standards
 
@@ -21,8 +21,13 @@ HD Extended Key Kit is a JavaScript/Node.js package and CLI for HD wallet extend
 ## Supported behavior
 
 - `deriveHdKeys({ chain: "bitcoin", format: "xpub"|"ypub"|"zpub", mnemonic })`
+- `deriveAddress({ chain: "bitcoin", format: "zpub", mnemonic, index: 0 })`
+- `deriveAddressFromExtendedKey({ chain: "bitcoin", extendedKey: "zpub...", index: 0 })`
+- `deriveAddresses({ chain: "bitcoin", format: "zpub", mnemonic, count: 20 })`
 - `deriveHdKeys({ chain: "ethereum", mnemonic })`
+- `deriveAddress({ chain: "ethereum", mnemonic })`
 - `deriveHdKeys({ chain: "solana", mnemonic })`
+- `deriveAddress({ chain: "solana", mnemonic })`
 
 Solana returns private/public key hex, `extendedPublicKey: null`, and warnings because ed25519 SLIP10 does not support BIP32 public child derivation.
 
@@ -35,4 +40,4 @@ npm test
 examples/run-examples.sh
 ```
 
-Tests cover SLIP132 Bitcoin x/y/z vectors, Ethereum first BIP44 account address, Solana SLIP10 derivation, chain metadata, and unsupported format errors.
+Tests cover SLIP132 Bitcoin x/y/z extended-key vectors, SLIP132 Bitcoin address vectors, address derivation from account xpub/ypub/zpub, address batches, Litecoin and Dogecoin deterministic addresses, Ethereum first BIP44 account address, Solana SLIP10 derivation and address, chain metadata, and unsupported format errors.

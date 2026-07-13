@@ -8,7 +8,7 @@ Node package and CLI for HD wallet key derivation:
 - CLI: `hdkeykit`
 - API: `deriveHdKeys(options)`
 
-Supports Bitcoin xpub/xprv, ypub/yprv, zpub/zprv; Litecoin Ltub/Ltpv and Mtub/Mtpv; Dogecoin and other secp256k1 HD account extended keys; Ethereum/EVM account keys and EIP-55 address; Solana SLIP10 ed25519 private/public keys.
+Supports Bitcoin xpub/xprv, ypub/yprv, zpub/zprv and address derivation; Litecoin Ltub/Ltpv and Mtub/Mtpv addresses; Dogecoin and other secp256k1 HD account extended keys and addresses; Ethereum/EVM account keys and EIP-55 address; Solana SLIP10 ed25519 private/public keys and base58 address.
 
 Solana does not have BIP32 xpub/ypub/zpub support. The package returns `extendedPublicKey: null` for Solana and includes warnings.
 

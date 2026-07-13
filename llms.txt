@@ -14,11 +14,12 @@ Supported derivation:
 
 - Bitcoin-family BIP32 secp256k1 extended keys.
 - Bitcoin `xpub/xprv`, `ypub/yprv`, `zpub/zprv`.
+- Bitcoin addresses from mnemonic/seed or account xpub/ypub/zpub.
 - Bitcoin testnet `tpub/tprv`, `upub/uprv`, `vpub/vprv`.
-- Litecoin `Ltub/Ltpv`, `Mtub/Mtpv`, plus compatibility x/y/z formats.
-- Dogecoin, Dash, Bitcoin Cash, Zcash transparent, DigiByte secp256k1 account extended keys.
+- Litecoin `Ltub/Ltpv`, `Mtub/Mtpv`, compatibility x/y/z formats, and addresses.
+- Dogecoin, Dash, Bitcoin Cash, Zcash transparent, DigiByte secp256k1 account extended keys and addresses.
 - Ethereum/EVM BIP44 keys and EIP-55 address.
-- Solana SLIP10 ed25519 hardened private/public key derivation, no xpub.
+- Solana SLIP10 ed25519 hardened private/public key derivation and base58 address, no xpub.
 
 Important: xpub/ypub/zpub are BIP32 serialized extended-key formats. Solana ed25519 SLIP10 does not support BIP32 public child derivation.
 

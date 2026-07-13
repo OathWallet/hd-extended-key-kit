@@ -83,9 +83,41 @@ export function base58Encode(bytes) {
   return out || "1";
 }
 
+export function base58Decode(value) {
+  if (typeof value !== "string" || value.length === 0) throw new Error("base58 value must be a non-empty string");
+  let out = 0n;
+  for (const char of value) {
+    const index = BASE58_ALPHABET.indexOf(char);
+    if (index === -1) throw new Error(`invalid base58 character: ${char}`);
+    out = out * 58n + BigInt(index);
+  }
+  let hex = out.toString(16);
+  if (hex.length % 2) hex = `0${hex}`;
+  let bytes = hex === "00" ? new Uint8Array() : hexToBytes(hex);
+  let leading = 0;
+  for (const char of value) {
+    if (char === "1") leading += 1;
+    else break;
+  }
+  if (leading > 0) bytes = concatBytes(new Uint8Array(leading), bytes);
+  return bytes;
+}
+
 export function base58CheckEncode(payload) {
   const checksum = sha256(sha256(payload)).slice(0, 4);
   return base58Encode(concatBytes(payload, checksum));
+}
+
+export function base58CheckDecode(value) {
+  const decoded = base58Decode(value);
+  if (decoded.length < 5) throw new Error("invalid Base58Check payload");
+  const payload = decoded.slice(0, -4);
+  const checksum = decoded.slice(-4);
+  const expected = sha256(sha256(payload)).slice(0, 4);
+  for (let index = 0; index < 4; index += 1) {
+    if (checksum[index] !== expected[index]) throw new Error("invalid Base58Check checksum");
+  }
+  return payload;
 }
 
 export function parseVersion(version) {

@@ -7,13 +7,14 @@ This repository derives HD wallet extended keys and account keys. GitHub is the 
 - Repository: `devdasx/hd-extended-key-kit`
 - npm package: `hd-extended-key-kit`
 - CLI: `hdkeykit`
-- Primary API: `deriveHdKeys`
+- Primary APIs: `deriveHdKeys`, `deriveAddress`, `deriveAddresses`, `deriveAddressFromExtendedKey`
 
 ## Repository layout
 
 - `src/bip32.js`: BIP32 secp256k1 private derivation and extended-key serialization.
 - `src/slip10.js`: SLIP10 ed25519 hardened derivation.
 - `src/chains.js`: chain metadata, coin types, and version bytes.
+- `src/address.js`: address encoders and address derivation from mnemonic/seed or account extended keys.
 - `src/index.js`: public API.
 - `bin/hdkeykit.js`: CLI.
 - `test`: standard-vector tests.

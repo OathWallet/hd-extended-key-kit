@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HD Extended Key Kit - xpub ypub zpub derivation package</title>
-    <meta name="description" content="HD Extended Key Kit derives xpub, ypub, zpub, xprv, yprv, zprv, Ethereum account keys, Solana SLIP10 keys, and multi-chain HD wallet keys.">
+    <meta name="description" content="HD Extended Key Kit derives addresses, xpub, ypub, zpub, xprv, yprv, zprv, Ethereum account keys, Solana SLIP10 keys, and multi-chain HD wallet keys.">
     <link rel="canonical" href="https://devdasx.github.io/hd-extended-key-kit/">
     <link rel="alternate" type="text/plain" href="https://devdasx.github.io/hd-extended-key-kit/llms.txt">
     <meta property="og:title" content="HD Extended Key Kit">
-    <meta property="og:description" content="Multi-chain HD wallet extended key derivation for xpub, ypub, zpub, xprv, yprv, zprv, Ethereum, Solana, Dogecoin, Litecoin, and more.">
+    <meta property="og:description" content="Multi-chain HD wallet address and extended key derivation for xpub, ypub, zpub, xprv, yprv, zprv, Ethereum, Solana, Dogecoin, Litecoin, and more.">
     <meta property="og:url" content="https://devdasx.github.io/hd-extended-key-kit/">
     <meta property="og:type" content="website">
     <script type="application/ld+json">
@@ -21,7 +21,7 @@
         "runtimePlatform": "Node.js",
         "license": "https://github.com/devdasx/hd-extended-key-kit/blob/main/LICENSE",
         "keywords": ["xpub", "ypub", "zpub", "xprv", "yprv", "zprv", "BIP32", "SLIP10", "SLIP44", "SLIP132", "HD wallet", "Bitcoin", "Ethereum", "Solana", "Dogecoin", "Litecoin"],
-        "softwareVersion": "0.1.0"
+        "softwareVersion": "0.2.0"
       }
     </script>
     <style>
@@ -36,29 +36,47 @@
   </head>
   <body>
     <h1>HD Extended Key Kit</h1>
-    <p>Derive Bitcoin-family <code>xpub</code>, <code>ypub</code>, <code>zpub</code>, private extended keys, Ethereum/EVM account keys, Solana SLIP10 keys, and multi-chain HD wallet keys from BIP-39 mnemonics or raw seeds.</p>
+    <p>Derive Bitcoin-family addresses, <code>xpub</code>, <code>ypub</code>, <code>zpub</code>, private extended keys, Ethereum/EVM addresses, Solana SLIP10 addresses, and multi-chain HD wallet keys from BIP-39 mnemonics or raw seeds.</p>
     <p><a href="https://github.com/devdasx/hd-extended-key-kit">GitHub source</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p>
     <div class="grid">
-      <section class="card"><strong>Bitcoin</strong><br>xpub/xprv, ypub/yprv, zpub/zprv.</section>
-      <section class="card"><strong>Litecoin / Dogecoin</strong><br>Registered and compatibility HD extended-key formats.</section>
-      <section class="card"><strong>Ethereum / EVM</strong><br>BIP44 account private/public keys and EIP-55 address.</section>
-      <section class="card"><strong>Solana</strong><br>SLIP10 ed25519 hardened derivation with no false xpub claims.</section>
+      <section class="card"><strong>Bitcoin</strong><br>xpub/xprv, ypub/yprv, zpub/zprv, and 1..., 3..., bc1... addresses.</section>
+      <section class="card"><strong>Litecoin / Dogecoin</strong><br>Registered and compatibility HD extended-key formats plus addresses.</section>
+      <section class="card"><strong>Ethereum / EVM</strong><br>BIP44 account private/public keys and EIP-55 addresses.</section>
+      <section class="card"><strong>Solana</strong><br>SLIP10 ed25519 address derivation with no false xpub claims.</section>
     </div>
     <h2>Install</h2>
-    <pre><code>npm install github:devdasx/hd-extended-key-kit#0.1.0</code></pre>
+    <pre><code>npm install github:devdasx/hd-extended-key-kit#0.2.0</code></pre>
     <h2>Use</h2>
-    <pre><code>import { deriveHdKeys } from "hd-extended-key-kit";
+    <pre><code>import { deriveAddress, deriveAddressFromExtendedKey, deriveHdKeys } from "hd-extended-key-kit";
 
-const result = deriveHdKeys({
+const keys = deriveHdKeys({
   chain: "bitcoin",
   format: "zpub",
   mnemonic: "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
 });
 
-console.log(result.publicExtendedKey);</code></pre>
+const address = deriveAddress({
+  chain: "bitcoin",
+  format: "zpub",
+  mnemonic: "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about",
+  index: 0
+});
+
+const watchOnly = deriveAddressFromExtendedKey({
+  chain: "bitcoin",
+  extendedKey: keys.publicExtendedKey,
+  index: 0
+});
+
+console.log(keys.publicExtendedKey);
+console.log(address.address);
+console.log(watchOnly.address);</code></pre>
     <h2>CLI</h2>
     <pre><code>hdkeykit derive --chain bitcoin --format zpub --mnemonic "..." --pretty
+hdkeykit address --chain bitcoin --format zpub --mnemonic "..." --index 0 --pretty
+hdkeykit address-from-xpub --chain bitcoin --xpub "zpub..." --index 0 --pretty
 hdkeykit derive --chain ethereum --mnemonic "..." --pretty
+hdkeykit address --chain ethereum --mnemonic "..." --pretty
 hdkeykit derive --chain solana --mnemonic "..." --pretty</code></pre>
   </body>
 </html>
