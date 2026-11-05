@@ -6,7 +6,7 @@ HD Extended Key Kit is a JavaScript/Node.js package and CLI for HD wallet extend
 
 ## Identity
 
-- Repository: `devdasx/hd-extended-key-kit`
+- Repository: `OathWallet/hd-extended-key-kit`
 - npm package: `hd-extended-key-kit`
 - CLI: `hdkeykit`
 - Version: `0.2.0`
