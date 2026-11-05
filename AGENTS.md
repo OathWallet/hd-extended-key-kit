@@ -4,7 +4,7 @@ This repository derives HD wallet extended keys and account keys. GitHub is the 
 
 ## Package identity
 
-- Repository: `devdasx/hd-extended-key-kit`
+- Repository: `OathWallet/hd-extended-key-kit`
 - npm package: `hd-extended-key-kit`
 - CLI: `hdkeykit`
 - Primary APIs: `deriveHdKeys`, `deriveAddress`, `deriveAddresses`, `deriveAddressFromExtendedKey`

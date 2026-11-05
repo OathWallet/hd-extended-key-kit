@@ -7,7 +7,7 @@ It supports Bitcoin-family `xpub/xprv`, `ypub/yprv`, and `zpub/zprv` formats whe
 GitHub is the canonical source of truth:
 
 ```text
-https://github.com/devdasx/hd-extended-key-kit
+https://github.com/OathWallet/hd-extended-key-kit
 ```
 
 ## What this package does
@@ -36,7 +36,7 @@ Solana uses ed25519 SLIP10-style hardened derivation. It does not support BIP32 
 Install from GitHub:
 
 ```bash
-npm install github:devdasx/hd-extended-key-kit#0.2.0
+npm install github:OathWallet/hd-extended-key-kit#0.2.0
 ```
 
 When npm registry publishing is configured:
@@ -48,7 +48,7 @@ npm install hd-extended-key-kit
 Use the CLI without installing globally:
 
 ```bash
-npx github:devdasx/hd-extended-key-kit#0.2.0 hdkeykit list-chains --pretty
+npx github:OathWallet/hd-extended-key-kit#0.2.0 hdkeykit list-chains --pretty
 ```
 
 ## JavaScript API

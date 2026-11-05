@@ -1,6 +1,6 @@
 # HD Extended Key Kit
 
-Canonical repository: https://github.com/devdasx/hd-extended-key-kit
+Canonical repository: https://github.com/OathWallet/hd-extended-key-kit
 
 HD Extended Key Kit is a JavaScript/Node.js package and CLI for deriving HD wallet extended keys and chain account keys.
 
@@ -32,5 +32,5 @@ examples/run-examples.sh
 
 Primary docs:
 
-- README: https://github.com/devdasx/hd-extended-key-kit/blob/main/README.md
-- Full agent context: https://devdasx.github.io/hd-extended-key-kit/llms-full.txt
+- README: https://github.com/OathWallet/hd-extended-key-kit/blob/main/README.md
+- Full agent context: https://oathwallet.github.io/hd-extended-key-kit/llms-full.txt

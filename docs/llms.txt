@@ -1,6 +1,6 @@
 # HD Extended Key Kit
 
-Canonical source: https://github.com/devdasx/hd-extended-key-kit
+Canonical source: https://github.com/OathWallet/hd-extended-key-kit
 
 Node package and CLI for HD wallet key derivation:
 

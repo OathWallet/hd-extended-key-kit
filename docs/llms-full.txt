@@ -1,6 +1,6 @@
 # HD Extended Key Kit full agent context
 
-Canonical repository: https://github.com/devdasx/hd-extended-key-kit
+Canonical repository: https://github.com/OathWallet/hd-extended-key-kit
 
 HD Extended Key Kit is a JavaScript/Node.js package and CLI for HD wallet extended-key derivation.
 
